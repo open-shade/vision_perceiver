@@ -1,14 +1,17 @@
 declare -a ROS_VERSIONS=( "foxy" "galactic" "humble" "rolling" )
 
 ORGANIZATION="deepmind"
-declare -a MODEL_VERSIONS=( "vision-perceiver-conv" "vision-perceiver-learned" "vision-perceiver-fourier" )
+MODEL_NAME="vision-perceiver"
+declare -a MODEL_VERSIONS=( "conv" "learned" "fourier" )
 
 for VERSION in "${ROS_VERSIONS[@]}"
 do
   for MODEL_VERSION in "${MODEL_VERSIONS[@]}"
   do
     ROS_VERSION="$VERSION"
-    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_MODEL_VERSION="$MODEL_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
+    HF_VERSION="$MODEL_NAME-$MODEL_VERSION"
+    TAG="$MODEL_VERSION"
+    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_VERSION",_TAG="$TAG",_MODEL_VERSION="$HF_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
     pids+=($!)
     echo Dispatched "$MODEL_VERSION" on ROS "$ROS_VERSION"
   done
