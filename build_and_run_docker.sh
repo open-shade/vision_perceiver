@@ -1,4 +1,4 @@
-CONTAINER_NAME=us-docker.pkg.dev/shade-prod/wrappers/resnet-ros2:foxy  # shaderobotics/resnet-ros2
+CONTAINER_NAME=us-docker.pkg.dev/shade-prod/wrappers/vision_perceiver-ros2:foxy  # shaderobotics/vision_perceiver-ros2
 
 # gcloud builds submit -t $CONTAINER_NAME --timeout=10000
 docker build . -t $CONTAINER_NAME --build-arg ROS_VERSION=foxy

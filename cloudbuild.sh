@@ -1,7 +1,7 @@
 declare -a ROS_VERSIONS=( "foxy" "galactic" "humble" "rolling" )
 
-ORGANIZATION="microsoft"
-declare -a MODEL_VERSIONS=( "<model versions here" )
+ORGANIZATION="deepmind"
+declare -a MODEL_VERSIONS=( "vision-perceiver-conv", "vision-perceiver-learned", "vision-perceiver-fourier" )
 
 for VERSION in "${ROS_VERSIONS[@]}"
 do
