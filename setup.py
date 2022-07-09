@@ -1,6 +1,6 @@
 from setuptools import setup
 
-package_name = 'vision_perceiver_ros2'
+package_name = 'vision_perceiver'
 
 setup(
     name=package_name,
@@ -13,8 +13,8 @@ setup(
     ],
     install_requires=[
         'setuptools',
-        'transformers',
         'torch',
+        'transformers',
         'cython',
         'datasets',
         "Pillow",
@@ -31,7 +31,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'vision_perceiver_ros2 = vision_perceiver_ros2.vision_perceiver_ros2:main'
+            'vision_perceiver = vision_perceiver.vision_perceiver:main'
         ],
     },
 )

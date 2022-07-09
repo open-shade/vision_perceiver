@@ -46,6 +46,8 @@ class RosIO(Node):
             1
         )
 
+        self.get_logger().info("vision_perceiver initialized")
+
     def listener_callback(self, msg: Image):
         # self.get_logger().info(msg.data)
         bridge = CvBridge()
