@@ -28,7 +28,7 @@ COPY . ./src/vision_perceiver
 
 RUN python3 -m pip install ./src/vision_perceiver && \
     : "Install the model" && \
-    python3 -c "from transformers import AutoFeatureExtractor; AutoFeatureExtractor.from_pretrained('${MODEL_NAME}')" && \
+    python3 -c "from transformers import AutoFeatureExtractor, AutoModelForImageClassification; AutoFeatureExtractor.from_pretrained('${MODEL_NAME}'); AutoModelForImageClassification.from_pretrained('${MODEL_NAME}')" && \
     colcon build
 
 ENTRYPOINT ["/home/shade/shade_ws/start.sh"]
