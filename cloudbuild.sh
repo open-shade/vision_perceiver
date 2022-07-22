@@ -11,7 +11,7 @@ do
     ROS_DISTRO="$VERSION"
     HF_VERSION="$MODEL_NAME-$MODEL_VERSION"
     TAG="$MODEL_VERSION"
-    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_DISTRO="$ROS_DISTRO",_TAG="$TAG",_MODEL_VERSION="$HF_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
+    gcloud builds submit --config cloudbuild.yaml . --substitutions=_ROS_VERSION="$ROS_DISTRO",_TAG="$TAG",_MODEL_VERSION="$HF_VERSION",_ORGANIZATION="$ORGANIZATION" --timeout=10000 &
     pids+=($!)
     echo Dispatched "$MODEL_VERSION" on ROS "$ROS_DISTRO"
   done
